@@ -21,12 +21,9 @@ else{
 <br>
 <?php
 $itemID = $_GET['id'];
-
 include 'dbConnect.php';
-
 $sql2 = "SELECT * FROM rentitems a  WHERE a.itemID = $itemID ";
 $result = mysqli_query($conn, $sql2) or die("Query fail: " . mysqli_error());
-
 while ($r = mysqli_fetch_array($result)) {
     $Name = $r['Name'];
     $Phone = $r['Phone'];
@@ -62,7 +59,6 @@ function avalability($startDate, $result2, $urooms, $totrooms)
         }
     }
 }
-
 if (isset($_POST['checkAv'])) {
     $stDate = $_POST['stDate'];
     $edDate = $_POST['edDate'];
@@ -104,10 +100,8 @@ if (isset($_POST['checkAv'])) {
         </style>
         <?php
     }
-
 }
 ?>
-
 <div class="container">
     <div id="test" style=" width: 100% text-align: center">
         <br>
@@ -169,7 +163,6 @@ if (isset($_POST['checkAv'])) {
                         <input type='text' name='price' style='display: none' value='$price'>
                         
                 "?>
-
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">First Name</label>
                         <div class="col-sm-3">
