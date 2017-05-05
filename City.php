@@ -44,77 +44,7 @@ $getthis = $_GET['city'];
         include('public/headerline2.php');
     }
 ?>
-<!--//-->
-
-<!---->
 <div class="single">
-<!--    <div class="container">
-        <div class="single-buy">
-            <div class="col-sm-3 check-top-single">
-                <div class="single-bottom">
-                    <h4>Property Type</h4>
-                    <ul>
-                        <li>
-                            <input type="checkbox"  id="brand" value="">
-                            <label for="brand"><span></span> Duplex</label>
-                        </li>
-                        <li>
-                            <input type="checkbox"  id="brand1" value="">
-                            <label for="brand1"><span></span> Apartment</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3 check-top-single">
-                <div class="single-bottom">
-                    <h4>BHK</h4>
-                    <ul>
-                        <li>
-                            <input type="checkbox"  id="brand5" value="">
-                            <label for="brand5"><span></span> 1 BHK</label>
-                        </li>
-                        <li>
-                            <input type="checkbox"  id="brand6" value="">
-                            <label for="brand6"><span></span> 2 BHK</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3 check-top-single">
-                <div class="single-bottom">
-                    <h4>Amenities</h4>
-                    <ul>
-                        <li>
-                            <input type="checkbox"  id="brand9" value="">
-                            <label for="brand9"><span></span>Lift </label>
-                        </li>
-                        <li>
-                            <input type="checkbox"  id="brand10" value="">
-                            <label for="brand10"><span></span>GYM </label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3 check-top-single">
-                <div class="single-bottom">
-                    <h4>Property Status</h4>
-                    <ul>
-                        <li>
-                            <input type="checkbox"  id="brand13" value="">
-                            <label for="brand13"><span></span> Under Construction</label>
-                        </li>
-                        <li>
-                            <input type="checkbox"  id="brand14" value="">
-                            <label for="brand14"><span></span> Ready to Move</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>-->
-
-    <!---->
     <div class="container">
         <div class="buy-single">
             <?php
@@ -262,10 +192,8 @@ $getthis = $_GET['city'];
     </div>
 
 </div>
-<!---->
 
 <!--footer-->
 <?php include ('public/footer.html') ?>
-<!--//footer-->
 </body>
 </html>
