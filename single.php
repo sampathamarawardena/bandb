@@ -118,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     echo "<p><span class='bath'>Baths</span>: <span class='two'>$bathrooms</span></p>";
                     echo "<p><span class='bath'>Price</span>: <span class='two'>$price</span></p>";
                     echo "<div class='right-side'>
-                        <a href='bk.php?id=$itemID' class='hvr-sweep-to-right more'>Book Now</a>
+                        <a href='gettingInfo.php?id=$itemID' class='hvr-sweep-to-right more'>Book Now</a>
                     </div>";
                     ?>
                 </div>

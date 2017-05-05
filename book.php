@@ -36,9 +36,8 @@ $tot = $totdays * $oneRoom;
     <br><br>
     <h3>Your Details</h3>
     <br>
-    <form name="bookingDetails" action="bk.php?id=16" method="post" class="form-horizontal">
+    <form name="booking" action="pay.php" method="post" class="form-horizontal">
         <div class="form-group">
-            <form class="form-horizontal">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">First Name</label>
                     <?php echo "<label style='color: #00a65a; font-weight: bold; text-align: left' for='inputEmail3' class='col-sm-1 control-label'> $Fname </label>"?>
@@ -59,15 +58,11 @@ $tot = $totdays * $oneRoom;
                     <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
                     <?php echo "<label style='color: #00a65a; font-weight: bold; text-align: left' for='inputEmail3' class='col-sm-4 control-label'> $address  </label>"?>
                 </div>
-            </form>
         </div>
-</form>
-    <br>
-<h3>Booking Details</h3>
-    <br>
-<form name="PaymentDetails" action="bk.php?id=16" method="post" class="form-horizontal">
-    <div class="form-group">
-        <form class="form-horizontal">
+        <br>
+        <h3>Booking Details</h3>
+        <br>
+        <div class="form-group">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Check In</label>
                 <label style="color: #00a65a; font-weight: bold; text-align: left" for="inputEmail3" class="col-sm-2 control-label"><?php echo date_format($stD, 'Y-m-d') ?></label>
@@ -99,16 +94,13 @@ $tot = $totdays * $oneRoom;
                             <input type="submit" value="Cancel booking">
                         </label>
                         <label style="width: 50%; color: #00a65a; font-weight: bold"  class="hvr-sweep-to-right">
-                            <input type="submit" value="Pay for booking">
+                            <input name="test" type="submit"  value="Pay for booking">
                         </label>
                     </div>
                 </div>
             </div>
-
-        </form>
-    </div>
-</form>
-
+        </div>
+    </form>
 </div> <!-- Confermation show all the details -->
 
 </div>
@@ -117,7 +109,7 @@ $tot = $totdays * $oneRoom;
     <br>
     <h3><center>Payment</center></h3>
     <h4>Payment Details</h4>
-    <form name="checkAv" action="bk.php?id=16" method="post" class="form-horizontal">
+    <form name="checkAv" action="gettinginfo.php?id=16" method="post" class="form-horizontal">
         <div class="form-group">
             <form class="form-horizontal">
                 <div class="form-group">
