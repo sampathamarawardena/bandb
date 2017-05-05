@@ -106,11 +106,11 @@ else{
                     }
                 }
             }
-            if (mysqli_num_rows($result) == 0){
-                echo "There are no any room.. Please try again later";
-            }
             echo "<div class='box-sin'> <div class='col-md-9 single-box'>";
             if($result != null){
+                if (mysqli_num_rows($result) == 0){
+                    echo "<center>No Result.</center>";
+                }
                 while ($r = mysqli_fetch_array($result)){
                     $itemID = $r['itemID'];
                     $img = $r['ImageLink'];
@@ -170,7 +170,7 @@ else{
                 }
             }
             else {
-                echo "No Result";
+                echo "<center>No Results.</center>";
             }
             echo "</div> </div>";
             ?>
