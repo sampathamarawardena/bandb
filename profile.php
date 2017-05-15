@@ -1,32 +1,15 @@
 <?php
+include ('public/header.php');
+
 session_start();
-if(isset($_SESSION['email'])){
-    $uname = 1;
+
+if(isset($_SESSION['email']))
+{
     $ema = $_SESSION['email'];
-    include ('public/header.php');
-    //$ema = 'asds';
-}
-else{
-    include('public/headerline.html');
-}
- // files include html
 
-if($uname == 0){
-
-?>
-
-<html>
-<head>
-    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="./css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-</head>
-<body>
-
-
-<?php }
-else {
     include 'dbConnect.php';
     include('public/headerline2.php');
+
     $sql = "SELECT * from users WHERE username='$ema'";
     if($conn->query($sql) == TRUE){
         $dbid = mysqli_query($conn, $sql);
@@ -38,12 +21,114 @@ else {
             $address = $row['Address'];
             $city = $row['City'];
             $uid = $row['userID'];
+            $uype = $row['type'];
         }
     }
     ?>
     <div>
         <div class="container">
-            <div class="form1">
+            <?php if ($uype == "Tourist"){ ?>
+                <div id="form1" class="form1">
+                    <div style="margin-top: 50px" ></div>
+                    <div style="margin-top: 20px" ></div>
+                    <button type="button" class="btn btn-success">Add New Room For Rent</button>
+                </div>
+                <div id="fomr4" class="form4">
+                    <div style="margin-top: 50px" ></div>
+                    <h3> My Rooms for Rent</h3>
+                    <div class='form-info'>
+                        <table class="table table-condensed">
+                            <tr class="success">
+                                <td> # </td>
+                                <td> Name </td>
+                                <td> Rooms </td>
+                                <td> Beds </td>
+                                <td> BathRooms </td>
+                                <td> Price </td>
+                                <td> Tools </td>
+                            </tr>
+
+                            <?php
+                            $rentItems = "SELECT * FROM rentitems WHERE renterID = '$uid' ";
+                            if($conn->query($rentItems) == TRUE){
+                                $rents = mysqli_query($conn, $rentItems);
+                                while ($ress = $rents->fetch_assoc()){
+                                    $ID = $ress['itemID'];
+                                    $Name = $ress['Name'];
+                                    $Rooms = $ress['Rooms'];
+                                    $Beds = $ress['Beds'];
+                                    $BathRooms = $ress['Bathrooms'];
+                                    $Price = $ress['Price'];
+                                    echo "<tr>";
+                                    echo "<td> $ID </td>";
+                                    echo "<td> $Name </td>";
+                                    echo "<td> $Rooms </td>";
+                                    echo "<td> $Beds </td>";
+                                    echo "<td> $BathRooms </td>";
+                                    echo "<td> $Price </td>";
+                                    echo "<td>";
+                                    echo " <div >
+                                                <label class='hvr-sweep-to-right'> <input type='submit' value='Cansel'> </label>
+                                                </div>
+                                        </td> 
+                                    </tr>";
+                                }
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="fomr5" class="form5">
+                    <div style="margin-top: 50px" ></div>
+                    <h3> Reservations </h3>
+                    <div class='form-info'>
+                        <table class="table table-condensed">
+                            <tr class="success">
+                                <td> # </td>
+                                <td> Name </td>
+                                <td> Rooms </td>
+                                <td> Beds </td>
+                                <td> BathRooms </td>
+                                <td> Price </td>
+                                <td> Tools </td>
+                            </tr>
+
+                            <?php
+                            $reser =  "SELECT * 
+                                           FROM bookings b, rentitems a
+                                           WHERE b.itemID = a.itemID AND a.renterID = $uid";
+                            if($conn->query($reser) == TRUE){
+                                $rese = mysqli_query($conn, $reser);
+                                while ($ress = $rese->fetch_assoc()){
+                                    $ID = $ress['itemID'];
+                                    $Name = $ress['Name'];
+                                    $Rooms = $ress['Rooms'];
+                                    $Beds = $ress['Beds'];
+                                    $BathRooms = $ress['Bathrooms'];
+                                    $Price = $ress['Price'];
+                                    echo "<tr>";
+                                    echo "<td> $ID </td>";
+                                    echo "<td> $Name </td>";
+                                    echo "<td> $Rooms </td>";
+                                    echo "<td> $Beds </td>";
+                                    echo "<td> $BathRooms </td>";
+                                    echo "<td> $Price </td>";
+                                    echo "<td>";
+                                    echo " <div >
+                                                <label class='hvr-sweep-to-right'> <input type='submit' value='Cansel'> </label>
+                                                </div>
+                                        </td> 
+                                    </tr>";
+                                }
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </div>
+
+            <?php } ?>
+            <div id="form2" class="form2">
                 <div style="margin-top: 50px" ></div>
                 <h3> My Profile details </h3>
                 <div style="margin-top: 50px" ></div>
@@ -85,46 +170,46 @@ else {
                     </div>
                 </form>
             </div>
-            <div class="form1">
+            <div id="fomr3" class="form3">
                 <div style="margin-top: 50px" ></div>
                 <h3> My Bookings</h3>
                 <div class='form-info'>
-                <table class="table table-condensed">
-                    <tr class="success">
-                        <td> # </td>
-                        <td> Booking ID </td>
-                        <td> User ID </td>
-                        <td> From </td>
-                        <td> To </td>
-                        <td> Tools </td>
-                    </tr>
+                    <table class="table table-condensed">
+                        <tr class="success">
+                            <td> # </td>
+                            <td> Booking ID </td>
+                            <td> User ID </td>
+                            <td> From </td>
+                            <td> To </td>
+                            <td> Tools </td>
+                        </tr>
 
                         <?php
                         $bookings = "SELECT * FROM `bookings` WHERE userID = '$uid' ";
-                            if($conn->query($bookings) == TRUE){
-                                $bk = mysqli_query($conn, $bookings);
-                                while ($res = $bk->fetch_assoc()){
-                                    $ID = $res['id'];
-                                    $rentID = $res['itemID'];
-                                    $userID = $res['rooms'];
-                                    $bookFrom = $res['BookFrom'];
-                                    $bookTo = $res['BookTo'];
-                                    echo "<tr>";
-                                        echo "<td> $ID </td>";
-                                        echo "<td> $rentID </td>";
-                                        echo "<td> $userID </td>";
-                                        echo "<td> $bookFrom </td>";
-                                        echo "<td> $bookTo </td>";
-                                        echo "<td>";
-                                        echo " <div >
+                        if($conn->query($bookings) == TRUE){
+                            $bk = mysqli_query($conn, $bookings);
+                            while ($res = $bk->fetch_assoc()){
+                                $ID = $res['id'];
+                                $rentID = $res['itemID'];
+                                $userID = $res['rooms'];
+                                $bookFrom = $res['BookFrom'];
+                                $bookTo = $res['BookTo'];
+                                echo "<tr>";
+                                echo "<td> $ID </td>";
+                                echo "<td> $rentID </td>";
+                                echo "<td> $userID </td>";
+                                echo "<td> $bookFrom </td>";
+                                echo "<td> $bookTo </td>";
+                                echo "<td>";
+                                echo " <div >
                                                 <label class='hvr-sweep-to-right'> <input type='submit' value='Cansel Booking'> </label>
                                                 </div>
                                         </td> 
                                     </tr>";
-                                }
                             }
+                        }
                         ?>
-                </table>
+                    </table>
                 </div>
             </div>
         </div>
@@ -133,10 +218,9 @@ else {
     <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="./js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-<?php }
+    <?php
+}
+else{
+    include ('public/headerline.php');
+}
 include ('public/footer.html');
-?>
-</body>
-</html>
-
-

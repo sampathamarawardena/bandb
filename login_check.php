@@ -24,7 +24,7 @@ if($count == 1){
         header("location:index.php");
     }
     elseif ($accType == "Tourist"){
-        header("location:admin/index.php");
+        header("location:index.php");
     }
 }
 else{

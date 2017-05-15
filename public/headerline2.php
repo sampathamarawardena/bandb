@@ -27,7 +27,7 @@
 		<div class="top-nav">
 			<ul class="right-icons">
 				<li><span ><i class="glyphicon glyphicon-phone"> </i>+9471 0737023</span></li>
-				<li><a  href="login.php"><i class="glyphicon glyphicon-user"> </i>My Account</a></li>
+				<li><a  href="profile.php"><i class="glyphicon glyphicon-user"> </i>My Account</a></li>
 				<li><a  href="public/logout.php"><i class="glyphicon glyphicon-registration-mark "> </i>Logout</a></li>
 				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
 			</ul>

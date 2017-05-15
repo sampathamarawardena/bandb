@@ -156,94 +156,99 @@
       <DataType>varchar(1000)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="42" parent="11" name="PRIMARY">
+    <column id="42" parent="11" name="renterID">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="43" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>itemID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="43" parent="12" name="inforID">
+    <column id="44" parent="12" name="inforID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="44" parent="12" name="userID">
+    <column id="45" parent="12" name="userID">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="45" parent="12" name="Name">
+    <column id="46" parent="12" name="Name">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="46" parent="12" name="Address">
+    <column id="47" parent="12" name="Address">
       <Position>4</Position>
       <DataType>varchar(250)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="47" parent="12" name="PhoneNo">
+    <column id="48" parent="12" name="PhoneNo">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="48" parent="12" name="PRIMARY">
+    <key id="49" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>inforID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="49" parent="13" name="userID">
+    <column id="50" parent="13" name="userID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="50" parent="13" name="Fname">
+    <column id="51" parent="13" name="Fname">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="51" parent="13" name="Lname">
+    <column id="52" parent="13" name="Lname">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="52" parent="13" name="email">
+    <column id="53" parent="13" name="email">
       <Position>4</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="53" parent="13" name="Phone">
+    <column id="54" parent="13" name="Phone">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="54" parent="13" name="Address">
+    <column id="55" parent="13" name="Address">
       <Position>6</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="55" parent="13" name="City">
+    <column id="56" parent="13" name="City">
       <Position>7</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="13" name="username">
+    <column id="57" parent="13" name="username">
       <Position>8</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="57" parent="13" name="password">
+    <column id="58" parent="13" name="password">
       <Position>9</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="58" parent="13" name="type">
+    <column id="59" parent="13" name="type">
       <Position>10</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="59" parent="13" name="PRIMARY">
+    <key id="60" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID</ColNames>
       <Primary>1</Primary>
