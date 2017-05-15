@@ -11,15 +11,22 @@ $count = mysqli_num_rows($result);
 if($count == 1){
     session_start();
     $_SESSION['email'] = $uname;
-    echo "Connect";
-
-    if(isset($_SESSION['email'])){
-        header("location:http://localhost/bandb/index.php");
+    while ($r = mysqli_fetch_array($result)) {
+        $accType = $r['type'];
+        $name = $r['Fname'];
+        $lname = $r['Lname'];
     }
-    else{
-        header("location:http://localhost/bandb/login.php");
+
+    //$fullname = $name + " " + $lname;
+    //$_SESSION['email'] = $fullname;
+
+    if($accType == "Renter"){
+        header("location:index.php");
+    }
+    elseif ($accType == "Tourist"){
+        header("location:admin/index.php");
     }
 }
 else{
-    header("location:http://localhost/bandb/login_error.php");
+    header("location:login_error.php");
 }

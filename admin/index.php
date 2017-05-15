@@ -17,15 +17,6 @@
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                            </button>
-                    </span>
-                </div>
-            </form>
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active treeview">
@@ -34,13 +25,13 @@
                 <li class="treeview">
                     <a href="addNew.php"> <i class="fa fa-download"></i><span>Add New</span></a>
                 </li>
-                <li>
+<!--                <li>
                     <a href="accountSummery.php"><i class="fa fa-bank"></i> <span>Account Summery</span>
                         <span class="pull-right-container">
                                 <small class="label pull-right bg-aqua">17</small>
                         </span>
                     </a>
-                </li>
+                </li>-->
                 <li>
                     <a href="rentItems.php"><i class="fa fa-trophy"></i> <span>Rent items</span>
                         <span class="pull-right-container">
@@ -55,7 +46,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="treeview">
+<!--                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-unlock"></i> <span> Admin Options </span><span class="pull-right-container"><i class="fa fa-angle-down pull-right"></i></span>
                     </a>
@@ -64,7 +55,7 @@
                         <li><a href=""><i class="fa fa-circle-o"></i> All Bookings </a></li>
                         <li><a href=""><i class="fa fa-circle-o"></i> Reports </a></li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
         </section>
     </aside>

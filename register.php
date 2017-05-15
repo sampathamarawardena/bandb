@@ -10,9 +10,10 @@ if(isset($_POST['submit'])) {
     $City = $_POST['city'];
     $uname = $_POST['uname'];
     $Pass = $_POST['password'];
+    $accType = $_POST['acctype'];
 
     $sql = "INSERT INTO users (Fname, Lname, email, Phone, Address, City, username, password, type)
-                VALUES ('$Fname', '$Lname', '$email', '$Phone', '$Add', '$City', '$uname', '$Pass', '1')";
+                VALUES ('$Fname', '$Lname', '$email', '$Phone', '$Add', '$City', '$uname', '$Pass', '$accType')";
 
     if ($conn->query($sql) === TRUE) {
         $message = "success";
@@ -21,7 +22,6 @@ if(isset($_POST['submit'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,9 +116,16 @@ if(isset($_POST['submit'])) {
                     <input type="text" name="address"  placeholder="Address" required="" >
                     <input type="text" name="city"  placeholder="City" required="" >
                     <input type="text" name="uname"  placeholder="Username" required="" >
-
+                    <div>
+                    Are you create account as a ?
+                    <select style="color: black" name="acctype" class="in-drop" required="">
+                        <option></option>
+                        <option>Tourist</option>
+                        <option>Renter</option>
+                    </select>
+                    </div>
+                    <br>
                     <input type="password"  name="password" placeholder="Password " required="">
-
                     <div class="popup">
                         <span class="popuptext" id="myPopup">
                             <?php if ($message == "success") { ?>

@@ -282,7 +282,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 <!--footer-->
-<?php include ('public/footer.html') ?>
+
+<?php  include ('public/footer.html') ?>
 <!--//footer-->
 
 </body>

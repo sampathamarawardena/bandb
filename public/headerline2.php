@@ -30,7 +30,6 @@
 				<li><a  href="login.php"><i class="glyphicon glyphicon-user"> </i>My Account</a></li>
 				<li><a  href="public/logout.php"><i class="glyphicon glyphicon-registration-mark "> </i>Logout</a></li>
 				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
-
 			</ul>
 			<div class="nav-icon">
 				<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
