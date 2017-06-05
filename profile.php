@@ -211,8 +211,9 @@ if(isset($_SESSION['email']))
                                 }
                                 elseif ($bookTo <= $date){
                                     echo " <div >
-                                                <label style='color: #1b7e5a' class='hvr-sweep-to-right'> <input type='submit' value='Give a Feedback'> </label>
-                                                </div>
+                                                <a href='index.php?itemId=$rentID'>
+                                                <label style='color: #1b7e5a' class='hvr-sweep-to-right'><input type='submit' value='Give a Feedback'> </label>
+                                                </a></div>
                                         </td> 
                                     </tr>";
                                 }

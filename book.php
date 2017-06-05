@@ -11,23 +11,21 @@ if(isset($_SESSION['email']))
 else{
     include ('public/headerline.php');
 }
-
-
-$Fname = $_POST['Fname'];
-$Lname  = $_POST['Lname'];
-$email = $_POST['email'];
-$mobile  = $_POST['phone'];
-$address  = $_POST['address'];
-$id = $_POST['id'];
-$stD = new DateTime($_POST['inDate']);
-$edD = new DateTime($_POST['outDate']);
-$uro = $_POST['rooms'];
-$oneRoom = $_POST['price'];
-$totdays = $edD->diff($stD)->format("%a");
-$tot = $totdays * $oneRoom;
-
- // files include html
-
+        $userID = $_POST['userID'];
+        $Fname = $_POST['Fname'];
+        $Lname  = $_POST['Lname'];
+        $email = $_POST['email'];
+        $mobile  = $_POST['phone'];
+        $address  = $_POST['address'];
+        $itemID = $_POST['itrmID'];
+        $chceckin = $_POST['inDate'];
+        $chceckOut = $_POST['outDate'];
+        $stD = new DateTime($_POST['inDate']);
+        $edD = new DateTime($_POST['outDate']);
+        $uro = $_POST['rooms'];
+        $oneRoom = $_POST['price'];
+        $totdays = $edD->diff($stD)->format("%a");
+        $tot = $totdays * $oneRoom;
 ?>
 <div class="container">
 <div id="test3" style=" width: 100% text-align: center">
@@ -37,6 +35,14 @@ $tot = $totdays * $oneRoom;
     <h3>Your Details</h3>
     <br>
     <form name="booking" action="pay.php" method="post" class="form-horizontal">
+        <?php echo "
+            <input type='text' name='userID' style='display: none' value='$userID'>
+            <input type='text' name='itemID' style='display: none' value='$itemID'>
+            <input type='text' name='checkIN' style='display: none' value='$chceckin'>
+            <input type='text' name='checkOUT' style='display: none' value='$chceckOut'>
+            <input type='text' name='rooms' style='display: none' value='$uro'>
+        "?>
+
         <div class="form-group">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">First Name</label>

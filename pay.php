@@ -1,6 +1,7 @@
 <?php
 
 include ('public/header.php');
+include ('dbConnect.php');
 
 session_start();
 
@@ -10,8 +11,45 @@ if(isset($_SESSION['email']))
 }
 else{
     include ('public/headerline.php');
-}
+};
+
 $price = $_POST['price'];
+$userID = $_POST['userID'];
+
+$id = $_POST['itemID'];
+$stD = $_POST['checkIN'];
+$edD = $_POST['checkOUT'];
+$uro = $_POST['rooms'];
+
+if (isset($_POST['checkAv'])) {
+    echo "click";
+    $ccno = $_POST['ccno'];
+    $expDate = $_POST['expDate'];
+    $cvv = $_POST['CVV'];
+    $namecard = $_POST['nameCard'];
+
+    $userID = $_POST['userID'];
+    $price = $_POST['price'];
+    $itemID = $_POST['itemID'];
+    $checkin = $_POST['checkIN'];
+    $checkout = $_POST['checkOUT'];
+    $rooms = $_POST['rooms'];
+
+    echo " Credit Card = $ccno Exp Date $expDate  user ID $userID Price $price itemID $itemID checkin
+    $checkin  check out $checkout  rooms = $rooms";
+
+    $insertBooking = "INSERT INTO `bookings` (`id`, `itemID`, `BookFrom`, `BookTo`, `rooms`, `userID`) 
+                      VALUES (NULL, '$itemID', '$checkin', '$checkout', '$rooms', '$userID');";
+    if ($conn->query($insertBooking) === TRUE) {
+        echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+        echo "<script type='text/javascript'>location.href='profile.php';</script>";
+        //echo "success";
+    } else {
+        echo "error";
+    }
+}
+
+
 ?>
 
 <head>
@@ -55,15 +93,23 @@ $price = $_POST['price'];
         });//]]>
     </script>
 </head>
+
 <div class="container">
     <div id="test4" style=" width: 100% text-align: center">
         <br>
         <h3><center>Payment</center></h3>
         <h4>Payment Details</h4>
 
-        <form name="checkAv" action="gettinginfo.php?id=16" method="post" class="form-horizontal">
+        <form name="checkAv" action="pay.php" method="post" class="form-horizontal">
+            <?php echo "
+            <input type='text' name='userID' style='display: none' value='$userID'>
+            <input type='text' name='price' style='display: none' value='$price'>
+            <input type='text' name='itemID' style='display: none' value='$id'>
+            <input type='text' name='checkIN' style='display: none' value='$stD'>
+            <input type='text' name='checkOUT' style='display: none' value='$edD'>
+            <input type='text' name='rooms' style='display: none' value='$uro'>
+            "; ?>
             <div class="form-group">
-                <form class="form-horizontal">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Card No</label>
                         <div class="col-sm-2">
@@ -95,12 +141,11 @@ $price = $_POST['price'];
                                     <input onclick="window.history.go(3)" type="submit" value="Cancel Booking">
                                 </label>
                                 <label style="width: 50%"  class="hvr-sweep-to-right">
-                                    <input type="submit" value="Pay">
+                                    <input type="submit" name="checkAv" value="Pay">
                                 </label>
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
         </form>
     </div>  <!-- getting credit card details -->
@@ -114,10 +159,7 @@ $price = $_POST['price'];
         }], "*")
     }
 </script>
-
-
 <?php
-
 include ('public/footer.html');
 ?>
 

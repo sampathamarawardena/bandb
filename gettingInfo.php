@@ -42,7 +42,7 @@ if(isset($_SESSION['email']))
         $sql3 = "SELECT * FROM bookings WHERE bookings.itemID = $itemIDs";
         $result2 = mysqli_query($conn, $sql3);
         $bools = null;
-        if($result2 != null){
+        if(mysqli_num_rows($result2) != 0){
             global $bools;
             while ($rr = mysqli_fetch_array($result2)) {
                 $bookfrom = $rr['BookFrom'];
@@ -93,6 +93,7 @@ if(isset($_SESSION['email']))
             if($conn->query($sql4) == TRUE) {
                 $user = mysqli_query($conn, $sql4);
                 while ($res = $user->fetch_assoc()) {
+                    $userID = $res['userID'];
                     $Fname = $res['Fname'];
                     $Lname = $res['Lname'];
                     $email = $res['email'];
@@ -169,14 +170,15 @@ if(isset($_SESSION['email']))
             <form name='ifAvailable' action='book.php' method='post' class='form-horizontal'>
                 <div class="form-group">
                     <form class="form-horizontal">
+
                         <?php echo "
-                        <input type='text' name='id' style='display: none' value='$itemIDs'>
+                        <input type='text' name='userID' style='display: none' value='$userID'>
+                        <input type='text' name='itrmID' style='display: none' value='$itemIDs'>
                         <input type='text' name='inDate' style='display: none' value='$stDate'>
                         <input type='text' name='outDate' style='display: none' value='$edDate'>
                         <input type='text' name='rooms' style='display: none' value='$urooms'>
                         <input type='text' name='price' style='display: none' value='$price'>
-                        
-                "?>
+                        "?>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">First Name</label>
                             <div class="col-sm-3">
