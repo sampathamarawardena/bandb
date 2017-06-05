@@ -27,11 +27,11 @@ if(isset($_SESSION['email']))
     ?>
     <div>
         <div class="container">
-            <?php if ($utype == "Tourist"){ ?>
+            <?php if ($utype == "Renter"){ ?>
                 <div id="form1" class="form1">
                     <div style="margin-top: 50px" ></div>
                     <div style="margin-top: 20px" ></div>
-                    <button type="button" class="btn btn-success">Add New Room For Rent</button>
+                    <a href="admin/addnewItem.php"> <button type="button" class="btn btn-success">Add New Room For Rent</button> </a>
                 </div>
                 <div id="fomr4" class="form4">
                     <div style="margin-top: 50px" ></div>
@@ -211,7 +211,7 @@ if(isset($_SESSION['email']))
                                 }
                                 elseif ($bookTo <= $date){
                                     echo " <div >
-                                                <a href='index.php?itemId=$rentID'>
+                                                <a href='index.php?itemId=$ID'>
                                                 <label style='color: #1b7e5a' class='hvr-sweep-to-right'><input type='submit' value='Give a Feedback'> </label>
                                                 </a></div>
                                         </td> 
