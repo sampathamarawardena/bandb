@@ -14945,7 +14945,7 @@
 	 */
 
 	return $.fn.dataTable;
-}));
-
+});
+    )
 }(window, document));
 

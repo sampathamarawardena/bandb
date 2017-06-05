@@ -201,11 +201,21 @@ if(isset($_SESSION['email']))
                                 echo "<td> $bookFrom </td>";
                                 echo "<td> $bookTo </td>";
                                 echo "<td>";
-                                echo " <div >
-                                                <label class='hvr-sweep-to-right'> <input type='submit' value='Cansel Booking'> </label>
+                                $date = date("Y-m-d");
+                                if ($bookFrom > $date) {
+                                    echo " <div >
+                                                <label style='color: #1b7e5a' class='hvr-sweep-to-right'> <input type='submit' value='Cansel Booking'> </label>
                                                 </div>
                                         </td> 
                                     </tr>";
+                                }
+                                elseif ($bookTo <= $date){
+                                    echo " <div >
+                                                <label style='color: #1b7e5a' class='hvr-sweep-to-right'> <input type='submit' value='Give a Feedback'> </label>
+                                                </div>
+                                        </td> 
+                                    </tr>";
+                                }
                             }
                         }
                         ?>

@@ -77,20 +77,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="buy-single-single">
         <div class="col-md-9 single-box">
             <div class=" buying-top">
-                <div class="flexslider" style="width: 700px">
+                <div class="flexslider" style="width: 100%">
                     <ul class="slides">
                         <?php echo "
                         <li data-thumb='/bandb/admin/$img'/>
-                            <img src='/bandb/admin/$img'/>
+                            <center><img style='height: 490px; width: 80%;' src='/bandb/admin/$img'/></center>
                         </li>
                         <li data-thumb='/bandb/admin/$img2'/>
-                            <img src='/bandb/admin/$img2'/>
+                            <center><img style='height: 490px; width: 80%;' src='/bandb/admin/$img2'/></center>
                         </li>
                         <li data-thumb='/bandb/admin/$img3'/>
-                            <img src='/bandb/admin/$img3'/>
+                            <center><img style='height: 490px; width: 80%;' src='/bandb/admin/$img3'/></center>
                         </li>
-                        <li data-thumb='/bandb/admin/$img3'/>
-                            <img src='/bandb/admin/$img3'/>
+                        <li data-thumb='/bandb/admin/$img4'/>
+                            <center><img style='height: 490px; width: 80%;' src='/bandb/admin/$img4'/></center>
                         </li>        
                         " ?>
                     </ul>
@@ -111,22 +111,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="buy-sin-single">
                 <div class="col-sm-5 middle-side immediate">
-                    <h4>Property details</h4>
+                    <h4 style="color: black">Property details</h4>
                     <?php
-                    echo "<p><span class='bath'>Room</span>: <span class='two'>$rooms</span></p>";
-                    echo "<p><span class='bath'>Bed </span>: <span class='two'>$beds</span></p>";
-                    echo "<p><span class='bath'>Baths</span>: <span class='two'>$bathrooms</span></p>";
-                    echo "<p><span class='bath'>Price</span>: <span class='two'>$price</span></p>";
-                    echo "<div class='right-side'>
-                        <a href='gettingInfo.php?id=$itemID' class='hvr-sweep-to-right more'>Book Now</a>
-                    </div>";
+                    echo "
+                    <table style='width: 100%; color: black'>
+                        <tr style='width: 100%'> 
+                            <td style='width: 45%'><strong> Room </strong> </td>
+                            <td style='width: 10%'> : </td>
+                            <td style='width: 45%'> $rooms </td>
+                        </tr>
+                        <tr style='width: 100%'> 
+                            <td style='width: 45%'><strong> Bed </strong> </td>
+                            <td style='width: 10%'> : </td>
+                            <td style='width: 45%'> $beds </td>
+                        </tr>
+                        <tr style='width: 100%'> 
+                            <td style='width: 45%'><strong> Baths </strong> </td>
+                            <td style='width: 10%'> : </td>
+                            <td style='width: 45%'> $bathrooms </td>
+                        </tr>
+                        <tr style='width: 100%;'> 
+                            <td style='width: 45%'><h4><strong> Price </strong></h4> </td>
+                            <td style='width: 10%'> : </td>
+                            <td style='width: 45%'><h4> $price Rs </h4></td>
+                        </tr>
+                    </table>
+                    ";
                     ?>
                 </div>
                 <div class="col-sm-7 buy-sin">
                     <h4>Description</h4>
-                    <?php echo "$Discription" ?>
+                    <?php echo "$Discription";
+                     ?>
                 </div>
                 <div class="clearfix"> </div>
+                <?php
+                echo "
+                <div class='right-side'>
+                    <a style='width: 100%; height: 40px; color: #1b7e5a' href='gettingInfo.php?id=$itemID' class='hvr-sweep-to-right more'><center><h3><strong> Book Now </strong></h3></center></a>
+                </div>
+                "; ?>
             </div>
         </div>
         <div class="col-md-3">
@@ -189,97 +213,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 
-<!---->
 <div class="container">
     <div class="future">
-        <h3 >Related Projects</h3>
+        <h3 >Feedbacks</h3>
         <div class="content-bottom-in">
-            <ul id="flexiselDemo1">
-                <li><div class="project-fur">
-                        <a href="single.html" ><img class="img-responsive" src="images/pi.jpg" alt="" />	</a>
-                        <div class="fur">
-                            <div class="fur1">
-                                <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
-                                <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
-                                <span>Paris</span>
-                            </div>
-                            <div class="fur2">
-                                <span>2 BHK</span>
-                            </div>
+            <?php
+                $feed = "SELECT * FROM feedback  WHERE itemID = $itemID";
+                $feedb = mysqli_query($conn, $feed);
+                while ($feedback = mysqli_fetch_array($feedb)) {
+                    $dis = $feedback['feedback'];
+                    $day = $feedback['date'];
+                    $user = $feedback['userID'];
+                     echo "
+                        <div class=\"alert alert-success\" role=\"alert\">
+                             <h4> <strong> \"$dis\" </strong> &emsp; &emsp;-&emsp;$user</h4>
+                             <h5 style='text-align: center'> $day</h5>
                         </div>
-                    </div></li>
-                <li><div class="project-fur">
-                        <a href="single.html" ><img class="img-responsive" src="images/pi1.jpg" alt="" />	</a>
-                        <div class="fur">
-                            <div class="fur1">
-                                <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
-                                <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
-                                <span>Paris</span>
-                            </div>
-                            <div class="fur2">
-                                <span>2 BHK</span>
-                            </div>
-                        </div>
-                    </div></li>
-                <li><div class="project-fur">
-                        <a href="single.html" ><img class="img-responsive" src="images/pi2.jpg" alt="" />	</a>
-                        <div class="fur">
-                            <div class="fur1">
-                                <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
-                                <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
-                                <span>Paris</span>
-                            </div>
-                            <div class="fur2">
-                                <span>2 BHK</span>
-                            </div>
-                        </div>
-                    </div></li>
-                <li><div class="project-fur">
-                        <a href="single.html" ><img class="img-responsive" src="images/pi3.jpg" alt="" />	</a>
-                        <div class="fur">
-                            <div class="fur1">
-                                <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
-                                <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
-                                <span>Paris</span>
-                            </div>
-                            <div class="fur2">
-                                <span>2 BHK</span>
-                            </div>
-                        </div>
-                    </div></li>
-            </ul>
-            <script type="text/javascript">
-                $(window).load(function() {
-                    $("#flexiselDemo1").flexisel({
-                        visibleItems: 4,
-                        animationSpeed: 1000,
-                        autoPlay: true,
-                        autoPlaySpeed: 3000,
-                        pauseOnHover: true,
-                        enableResponsiveBreakpoints: true,
-                        responsiveBreakpoints: {
-                            portrait: {
-                                changePoint:480,
-                                visibleItems: 1
-                            },
-                            landscape: {
-                                changePoint:640,
-                                visibleItems: 2
-                            },
-                            tablet: {
-                                changePoint:768,
-                                visibleItems: 3
-                            }
-                        }
-                    });
-
-                });
-            </script>
-            <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+                        ";
+                }
+            ?>
         </div>
     </div>
 
 </div>
+<!---->
 
 <!--footer-->
 

@@ -1076,4 +1076,5 @@
 
     $.fn.colorpicker.constructor = Colorpicker;
 
-  }));
+  });
+)

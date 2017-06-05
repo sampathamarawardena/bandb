@@ -58,7 +58,7 @@ if(isset($_SESSION['email']))
                         }
                     }
                     else{
-                        if ($free >= $urooms){
+                        if ($totrooms >= $urooms){
                             $bools = true;
                         }
                         else{
@@ -126,11 +126,11 @@ if(isset($_SESSION['email']))
             <div class="form-group" >
                 <label for="inputEmail3" class="col-sm-1 control-label">Check In</label>
                 <div class="col-sm-2">
-                    <input name="stDate" type="date" class="form-control" id="inputEmail3" required="">
+                    <input name="stDate" type="date" class="form-control" id="inputEmail3" required="" min="<?php echo date('Y-m-d');?>">
                 </div>
                 <label for="inputEmail3" class="col-sm-1 control-label">Check Out</label>
                 <div class="col-sm-2">
-                    <input name="edDate" type="date" class="form-control" id="inputEmail3" required="">
+                    <input name="edDate" type="date" class="form-control" id="inputEmail3" required=""  min="<?php echo date('Y-m-d');?>">
                 </div>
                 <label for="inputEmail3" class="col-sm-2 control-label">How Many Rooms</label>
                 <div class="col-sm-1">

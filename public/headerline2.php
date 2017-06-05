@@ -29,7 +29,7 @@
 				<li><span ><i class="glyphicon glyphicon-phone"> </i>+9471 0737023</span></li>
 				<li><a  href="profile.php"><i class="glyphicon glyphicon-user"> </i>My Account</a></li>
 				<li><a  href="public/logout.php"><i class="glyphicon glyphicon-registration-mark "> </i>Logout</a></li>
-				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
+<!--				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>-->
 			</ul>
 			<div class="nav-icon">
 				<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
@@ -37,11 +37,12 @@
 				</div>
 			</div>
 			<div class="clearfix"> </div>
-			<!---pop-up-box---->
 
+			<!---pop-up-box---->
 			<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-			<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<!--			<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>-->
 			<!---//pop-up-box---->
+
 			<div id="small-dialog" class="mfp-hide">
 				<!----- tabs-box ---->
 				<div class="sap_tabs">
