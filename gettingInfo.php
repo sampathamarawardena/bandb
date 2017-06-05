@@ -18,9 +18,9 @@ if(isset($_SESSION['email']))
 
     <br>
     <?php
-    $itemID = $_GET['id'];
+    $itemIDs = $_GET['id'];
     include 'dbConnect.php';
-    $sql2 = "SELECT * FROM rentitems a  WHERE a.itemID = $itemID ";
+    $sql2 = "SELECT * FROM rentitems a  WHERE a.itemID = $itemIDs ";
     $result = mysqli_query($conn, $sql2) or die("Query fail: " . mysqli_error());
     while ($r = mysqli_fetch_array($result)) {
         $Name = $r['Name'];
@@ -35,34 +35,50 @@ if(isset($_SESSION['email']))
         $totrooms = $rooms;
     }
 
-    $sql3 = "SELECT * FROM bookings WHERE bookings.itemID = $itemID";
-    $result2 = mysqli_query($conn, $sql3) or die("Query fail: " . mysqli_error());
 
-    function avalability($startDate, $result2, $urooms, $totrooms)
+    function avalability($startDate, $urooms, $totrooms, $edDate, $itemIDs, $conn)
     {
-        while ($rr = mysqli_fetch_array($result2)) {
-            $bookfrom = $rr['BookFrom'];
-            $bookto = $rr['BookTo'];
-            $rooms = $rr['rooms'];
-            $totrooms = $totrooms - $rooms;
-            if (($startDate >= $bookfrom) && ($startDate <= $bookto)) {
-                if ($urooms <= $totrooms) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            else {
-                return true;
+        //echo $totrooms;
+        $sql3 = "SELECT * FROM bookings WHERE bookings.itemID = $itemIDs";
+        $result2 = mysqli_query($conn, $sql3);
+        $bools = null;
+        if($result2 != null){
+            global $bools;
+            while ($rr = mysqli_fetch_array($result2)) {
+                $bookfrom = $rr['BookFrom'];
+                $bookto = $rr['BookTo'];
+                $rooms = $rr['rooms'];
+                $free = $totrooms - $rooms;
+                    if( ($bookfrom <= $startDate) && ($bookto >= $startDate) ){
+                        if ($free >= $urooms){
+                            $bools = true;
+                        }
+                        else{
+                            $bools = false;
+                        }
+                    }
+                    else{
+                        if ($free >= $urooms){
+                            $bools = true;
+                        }
+                        else{
+                            $bools = false;
+                        }
+                    }
             }
         }
+        else{
+            $bools = true;
+        }
+        return $bools;
     }
+
     if (isset($_POST['checkAv'])) {
         $stDate = $_POST['stDate'];
         $edDate = $_POST['edDate'];
         $urooms = $_POST['uroom'];
 
-        if (avalability($stDate, $result2, $urooms, $totrooms) == true) {
+        if (avalability($stDate, $urooms, $totrooms, $edDate, $itemIDs, $conn) == true) {
             ?>
             <style type="text/css">
                 #test{
@@ -73,7 +89,7 @@ if(isset($_SESSION['email']))
                 }
             </style>
             <?php
-            $sql4 = "SELECT * from users WHERE email=$disname";
+            $sql4 = "SELECT * from users WHERE email='$disname'";
             if($conn->query($sql4) == TRUE) {
                 $user = mysqli_query($conn, $sql4);
                 while ($res = $user->fetch_assoc()) {
@@ -106,7 +122,7 @@ if(isset($_SESSION['email']))
             <h3> Check Availability</h3>
             <br>
             <br>
-            <?php echo "<form name='checkAv' action='gettingInfo.php?id=$itemID' method='post' class='form-horizontal'>" ?>
+            <?php echo "<form name='checkAv' action='gettingInfo.php?id=$itemIDs' method='post' class='form-horizontal'>" ?>
             <div class="form-group" >
                 <label for="inputEmail3" class="col-sm-1 control-label">Check In</label>
                 <div class="col-sm-2">
@@ -154,7 +170,7 @@ if(isset($_SESSION['email']))
                 <div class="form-group">
                     <form class="form-horizontal">
                         <?php echo "
-                        <input type='text' name='id' style='display: none' value='$itemID'>
+                        <input type='text' name='id' style='display: none' value='$itemIDs'>
                         <input type='text' name='inDate' style='display: none' value='$stDate'>
                         <input type='text' name='outDate' style='display: none' value='$edDate'>
                         <input type='text' name='rooms' style='display: none' value='$urooms'>

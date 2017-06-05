@@ -1,16 +1,16 @@
 <?php
 include ('dbConnect.php');
 
-$uname = $_POST['email'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
-$sql2 = "SELECT * FROM `users` WHERE `username`= '$uname' AND `password`= '$password'";
+$sql2 = "SELECT * FROM `users` WHERE `email`= '$email' AND `password`= '$password'";
 
 $result = mysqli_query($conn, $sql2) or die(mysqli_errno());
 $count = mysqli_num_rows($result);
 if($count == 1){
     session_start();
-    $_SESSION['email'] = $uname;
+    $_SESSION['email'] = $email;
     while ($r = mysqli_fetch_array($result)) {
         $accType = $r['type'];
         $name = $r['Fname'];

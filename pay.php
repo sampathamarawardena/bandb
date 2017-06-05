@@ -100,7 +100,6 @@ $price = $_POST['price'];
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
         </form>

@@ -10,7 +10,7 @@ if(isset($_SESSION['email']))
     include 'dbConnect.php';
     include('public/headerline2.php');
 
-    $sql = "SELECT * from users WHERE username='$ema'";
+    $sql = "SELECT * from users WHERE email='$ema'";
     if($conn->query($sql) == TRUE){
         $dbid = mysqli_query($conn, $sql);
         while ($row = $dbid->fetch_assoc()){
@@ -21,13 +21,13 @@ if(isset($_SESSION['email']))
             $address = $row['Address'];
             $city = $row['City'];
             $uid = $row['userID'];
-            $uype = $row['type'];
+            $utype = $row['type'];
         }
     }
     ?>
     <div>
         <div class="container">
-            <?php if ($uype == "Tourist"){ ?>
+            <?php if ($utype == "Tourist"){ ?>
                 <div id="form1" class="form1">
                     <div style="margin-top: 50px" ></div>
                     <div style="margin-top: 20px" ></div>
@@ -178,7 +178,7 @@ if(isset($_SESSION['email']))
                         <tr class="success">
                             <td> # </td>
                             <td> Booking ID </td>
-                            <td> User ID </td>
+                            <td> Rooms </td>
                             <td> From </td>
                             <td> To </td>
                             <td> Tools </td>
@@ -191,13 +191,13 @@ if(isset($_SESSION['email']))
                             while ($res = $bk->fetch_assoc()){
                                 $ID = $res['id'];
                                 $rentID = $res['itemID'];
-                                $userID = $res['rooms'];
+                                $rooms = $res['rooms'];
                                 $bookFrom = $res['BookFrom'];
                                 $bookTo = $res['BookTo'];
                                 echo "<tr>";
                                 echo "<td> $ID </td>";
                                 echo "<td> $rentID </td>";
-                                echo "<td> $userID </td>";
+                                echo "<td> $rooms </td>";
                                 echo "<td> $bookFrom </td>";
                                 echo "<td> $bookTo </td>";
                                 echo "<td>";
